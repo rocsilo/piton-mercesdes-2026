@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card card-custom">
+    <div class="card-header-custom">
+        <h4><i class="bi bi-person-plus-fill me-2"></i>Nou Registre</h4>
+    </div>
+    
+    <div class="card-body p-4">
+        <form method="POST">
+            
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingName" name="name" placeholder="Nom" required>
+                <label for="floatingName">Nom d'usuari</label>
+            </div>
+
+            <div class="form-floating mb-4">
+                <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="mail" required>
+                <label for="floatingEmail">Correu electrònic</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary-custom w-100 py-2 rounded-pill">
+                <i class="bi bi-save me-2"></i>Guardar a la BD
+            </button>
+        </form>
+
+        <div class="mt-4">
+            {% if msg %}
+                <div class="alert alert-{{ msg_type }} d-flex align-items-center border-0 shadow-sm">
+                    {% if msg_type == 'success' %}
+                        <i class="bi bi-check-circle-fill fs-4 me-3"></i>
+                    {% else %}
+                        <i class="bi bi-x-circle-fill fs-4 me-3"></i>
+                    {% endif %}
+                    <div>{{ msg }}</div>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+    
+    <div class="card-footer bg-light text-center p-3 border-0">
+        <a href="/" class="text-primary text-decoration-none fw-bold">
+            <i class="bi bi-arrow-left me-1"></i> Tornar al cercador
+        </a>
+    </div>
+</div>
+{% endblock %}

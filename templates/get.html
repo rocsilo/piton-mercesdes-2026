@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card card-custom">
+    <div class="card-header-custom">
+        <h4><i class="bi bi-search me-2"></i>Cercar Usuari</h4>
+    </div>
+    
+    <div class="card-body p-4">
+        <form method="POST">
+            <label class="form-label text-muted small fw-bold">NOM D'USUARI</label>
+            
+            <div class="input-group mb-4">
+                <span class="input-group-text bg-light border-end-0">
+                    <i class="bi bi-person text-secondary"></i>
+                </span>
+                <input type="text" name="name" class="form-control border-start-0 bg-light" placeholder="Ex: pepe" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary-custom w-100 py-2 rounded-pill">
+                Cercar Email
+            </button>
+        </form>
+
+        <div class="mt-4">
+            {% if result_email %}
+                <div class="alert alert-success d-flex align-items-center border-0 shadow-sm">
+                    <i class="bi bi-check-circle-fill fs-4 me-3"></i>
+                    <div>
+                        <strong>¡Trobat!</strong><br>
+                        El mail és: <span class="fw-bold">{{ result_email }}</span>
+                    </div>
+                </div>
+            {% elif error %}
+                <div class="alert alert-danger d-flex align-items-center border-0 shadow-sm">
+                    <i class="bi bi-exclamation-triangle-fill fs-4 me-3"></i>
+                    <div>
+                        <strong>Error:</strong> {{ error }}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+    <div class="card-footer bg-light text-center p-3 border-0">
+        <span class="text-muted small">¿No existeix?</span>
+        <a href="/add" class="text-primary text-decoration-none fw-bold ms-1">Afegir nou usuari &rarr;</a>
+    </div>
+</div>
+{% endblock %}
